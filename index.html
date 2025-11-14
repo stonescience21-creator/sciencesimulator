@@ -1,36 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>science Simulator</title>
-
-<meta name="description" content="Interactive chemistry and physics simulator with reaction prediction, periodic table tools, and learning features.">
-
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow">
-
   <meta charset="UTF-8">
   <title>Science Simulator</title>
   <link rel="stylesheet" href="style.css">
-  <meta name="keywords" content="chemistry simulator, physics simulator, reactions, periodic table, valency, science calculator, chemistry tool">
-<h1>Chemistry & Physics Reaction Simulator</h1>
-<p>
-Explore chemical reactions, predict products, view balanced equations, 
-use an interactive periodic table, and test physics calculations.
-This tool is designed for science students and hobbyists.
-</p>
+
+  <!-- Intro Animation -->
+  <style>
+    #splash {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      animation: splashFade 2.8s ease forwards;
+    }
+
+    #splash h1 {
+      font-size: 3rem;
+      color: #ff7a00;
+      letter-spacing: 2px;
+      opacity: 0;
+      animation: splashText 1.8s ease forwards;
+    }
+
+    @keyframes splashText {
+      0% { opacity: 0; transform: scale(0.7); text-shadow: 0 0 0 rgba(120,255,150,0); }
+      40% { opacity: 1; transform: scale(1.15); text-shadow: 0 0 22px rgba(120,255,150,0.6); }
+      100% { opacity: 1; transform: scale(1); text-shadow: 0 0 8px rgba(255,122,0,0.7); }
+    }
+
+    @keyframes splashFade {
+      0% { opacity: 1; }
+      70% { opacity: 1; }
+      100% { opacity: 0; pointer-events: none; }
+    }
+  </style>
+
+  <script>
+    // Remove splash screen after animation
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        const splash = document.getElementById("splash");
+        if (splash) splash.remove();
+      }, 2900);
+    });
+  </script>
 
 </head>
+
 <body>
 
-  <h1 class="center">Science Simulator</h1>
-
-  <div class="nav-center">
-    <a href="chem.html" class="nav-btn">Chemistry</a>
-    <a href="phys.html" class="nav-btn">Physics</a>
+  <!-- Animated Intro Splash -->
+  <div id="splash">
+    <h1>Science Simulator</h1>
   </div>
+
+  <!-- Glass Navbar -->
+  <div id="navbar">
+    <div class="nav-title">Science Simulator</div>
+    <div class="nav-links">
+      <a href="chem.html">Chemistry</a>
+      <a href="phys.html">Physics</a>
+      <a href="#" onclick="openCredits()">Credits</a>
+    </div>
+  </div>
+
+  <!-- MAIN TITLE -->
+  <h1 class="center fade-in">Explore Your Subjects</h1>
+
+  <!-- INTRO PANEL -->
+  <div class="result-box fade-in" style="max-width:640px; text-align:center;">
+    <h2 style="color:#ff7a00; margin-bottom:10px; font-size:1.6rem;">
+      Welcome
+    </h2>
+    <p style="font-size:1rem; line-height:1.6; color:#e3e3e3;">
+      Choose a subject to begin your interactive science experience.
+      Chemistry and Physics both feature guided tools, clean visuals and great ui
+    </p>
+  </div>
+
+  <!-- SUBJECT SELECT PANELS -->
+  <div class="subject-select">
+    <a href="chem.html" class="subject-panel">
+      <h3>Chemistry</h3>
+      <p>Reagents, formulas, reactions</p>
+    </a>
+
+    <a href="phys.html" class="subject-panel">
+      <h3>Physics</h3>
+      <p>Force, energy, mechanics</p>
+    </a>
+  </div>
+
+  <!-- CREDITS POPUP -->
+  <div id="credits-popup" class="popup hidden">
+    <div class="popup-inner" style="max-width:400px;">
+      <h2 style="margin-bottom:10px;">Credits</h2>
+      <p>This project was designed with a hybrid Crunchyroll × Netflix interface concept.</p>
+      <button class="back-btn" onclick="closeCredits()" style="margin-top:14px;">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function openCredits() {
+      document.getElementById("credits-popup").classList.remove("hidden");
+    }
+    function closeCredits() {
+      document.getElementById("credits-popup").classList.add("hidden");
+    }
+  </script>
 
 </body>
 </html>
-
-
 
