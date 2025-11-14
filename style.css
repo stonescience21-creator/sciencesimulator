@@ -1,0 +1,262 @@
+/* --------------------------------------------------
+   BASE UI STYLING (NORMAL FUNCTIONAL PART)
+-------------------------------------------------- */
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  background: #000;
+  overflow-x: hidden;
+}
+
+/* Title */
+.center {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Navigation */
+.nav-center {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.nav-btn {
+  padding: 12px 22px;
+  background: #E50914;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.nav-btn:hover {
+  background: #B20710;
+  transform: translateY(-2px);
+}
+
+.back-btn {
+  padding: 12px 20px;
+  background: #222;
+  color: #fff;
+  border-radius: 4px;
+  border: 1px solid #444;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.back-btn:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+/* Reagents */
+.reagent {
+  background: #111;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  border: 1px solid #222;
+}
+
+.reagent input {
+  background: #000;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+/* Results */
+.result-box {
+  background: #111;
+  padding: 18px;
+  margin-top: 20px;
+  border-radius: 6px;
+  border: 1px solid #222;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+/* Preview */
+.preview-box {
+  background: #000;
+  border: 1px solid #333;
+  padding: 10px;
+  border-radius: 4px;
+  min-height: 40px;
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+  z-index: 999;
+}
+
+.popup.hidden {
+  display: none;
+}
+
+.popup-inner {
+  background: #0A0A0A;
+  padding: 18px;
+  border-radius: 6px;
+  width: 90%;
+  max-width: 950px;
+  border: 1px solid #222;
+}
+
+/* --------------------------------------------------
+   PERIODIC TABLE BASE
+-------------------------------------------------- */
+
+#periodic-table {
+  display: grid;
+  grid-template-columns: repeat(18, 34px);
+  grid-gap: 4px;
+  margin-top: 20px;
+}
+
+.periodic-cell {
+  width: 34px;
+  height: 34px;
+  background: #1A1A1A;
+  border-radius: 4px;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+
+.periodic-cell:hover {
+  background: #E50914;
+  border-color: #E50914;
+  transform: scale(1.1);
+}
+
+/* --------------------------------------------------
+   DR. STONE ANIME THEME (BACKGROUND + FX)
+-------------------------------------------------- */
+
+/* Try multiple filenames to avoid mismatch */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image:
+    url("dr stone.jpeg"),
+    url("dr_stone.jpeg"),
+    url("dr stone.jpg"),
+    url("dr_stone.jpg"),
+    url("dr-stone.jpeg"),
+    url("dr-stone.jpg");
+  filter: brightness(0.65);
+}
+
+/* Moving cloud overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.22;
+  animation: cloudsMove 35s linear infinite;
+  z-index: -2;
+
+  background-image:
+    url("dr stone.jpeg"),
+    url("dr_stone.jpeg"),
+    url("dr stone.jpg"),
+    url("dr_stone.jpg"),
+    url("dr-stone.jpeg"),
+    url("dr-stone.jpg");
+}
+
+@keyframes cloudsMove {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(4%) translateY(-1%); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+/* Parallax lift */
+.result-box,
+.reagent {
+  transform: translateZ(12px);
+}
+
+/* Flash effect when reaction completes */
+#result.reaction-flash {
+  animation: scienceFlash 0.55s ease-out;
+}
+
+@keyframes scienceFlash {
+  0% { box-shadow: 0 0 26px rgba(120,255,150,0.9); }
+  50% { box-shadow: 0 0 12px rgba(120,255,150,0.4); }
+  100% { box-shadow: none; }
+}
+
+/* Quote hover */
+.quote-hover {
+  position: relative;
+}
+
+.quote-hover:hover::after {
+  content: attr(data-quote);
+  position: absolute;
+  top: -50px;
+  left: 0;
+  background: rgba(255,255,210,0.95);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #2a2a2a;
+  border: 1px solid #bfa87a;
+  white-space: nowrap;
+  box-shadow: 0 0 10px rgba(255,255,200,0.4);
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Button pulse */
+.nav-btn:hover,
+.back-btn:hover {
+  animation: pulseGlow 0.3s ease-out;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 rgba(120,255,150,0.5); }
+  50% { box-shadow: 0 0 12px rgba(120,255,150,0.8); }
+  100% { box-shadow: none; }
+}
+
+/* HUD lift */
+.periodic-cell:hover {
+  transform: translateY(-4px) scale(1.15);
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chemistry Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1 class="center">Chemistry</h1>
+
+  <div id="reagent-area"></div>
+
+  <div class="nav-center" style="margin-top:14px; gap:10px;">
+    <button id="add-reagent" class="nav-btn">Add</button>
+    <button id="remove-reagent" class="back-btn">Remove</button>
+    <button id="predict" class="nav-btn">React</button>
+    <a href="index.html" class="back-btn">Back</a>
+  </div>
+
+  <div id="result" class="result-box"></div>
+
+
+  <!-- PERIODIC BUILDER POPUP -->
+  <div id="periodic-popup" class="popup hidden" aria-hidden="true">
+    <div class="popup-inner">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h2 style="margin:0;font-size:1.05rem">Build a compound</h2>
+        <button id="periodic-close" class="btn-ghost">Close</button>
+      </div>
+
+      <div style="display:flex;gap:10px;">
+        <div style="flex:1; max-width:540px;">
+          <div id="periodic-table" style="display:grid;grid-template-columns:repeat(18,32px);gap:4px;"></div>
+
+          <div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap;">
+            <button class="btn-ghost small" data-action="clear">Clear</button>
+            <button class="btn-ghost small" data-action="open-paren">( )</button>
+            <button class="btn-ghost small" data-action="add-sub">Subscript</button>
+            <button class="btn-ghost small" data-action="charge-plus">+ / -</button>
+          </div>
+
+          <div style="margin-top:8px;">
+            <strong>Polyatomic ions</strong>
+            <div id="poly-list" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"></div>
+          </div>
+        </div>
+
+        <div style="width:260px;flex-shrink:0;">
+          <div style="margin-bottom:8px"><strong>Formula (raw)</strong></div>
+          <div id="formula-raw" class="preview-box"></div>
+
+          <div style="margin-top:8px"><strong>Preview</strong></div>
+          <div id="formula-pretty" class="preview-box"></div>
+
+          <div style="margin-top:10px;display:flex;gap:8px;">
+            <button id="insert-formula" class="nav-btn" style="flex:1">Insert</button>
+            <button id="cancel-formula" class="back-btn" style="flex:1;background:#444">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="chem.js"></script>
+  <button id="predict" class="nav-btn quote-hover" 
+ data-quote="Get excited! — Senku">
+React
+</button>
+
+</body>
+</html>

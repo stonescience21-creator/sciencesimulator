@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Physics Calculator</h1>
+
+    <label>Force (N):</label>
+    <input id="force" type="number">
+
+    <label>Mass (kg):</label>
+    <input id="mass" type="number">
+
+    <button onclick="calcAcceleration()">Compute Acceleration</button>
+
+    <div id="physResult" class="result"></div>
+
+    <a class="back-btn" href="index.html">Back</a>
+  </div>
+
+  <script src="phys.js"></script>
+</body>
+</html>
