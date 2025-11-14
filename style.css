@@ -1,224 +1,182 @@
-/* --------------------------------------------------
-   BASE UI STYLING (NORMAL FUNCTIONAL PART)
--------------------------------------------------- */
-
-body {
+/* ---------------------------------------------
+   RESET
+--------------------------------------------- */
+* {
   margin: 0;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  color: #fff;
-  background: #000;
-  overflow-x: hidden;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Title */
+/* ---------------------------------------------
+   BACKGROUND
+--------------------------------------------- */
+body {
+  font-family: "Inter", sans-serif;
+  color: #ffffff;
+  background: url("bg.jpg") center/cover no-repeat fixed;
+  background-color: #000;
+}
+
+/* ---------------------------------------------
+   TITLE
+--------------------------------------------- */
 .center {
   text-align: center;
-  font-size: 2rem;
+  margin-top: 20px;
+  font-size: 2.3rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  letter-spacing: 1.5px;
+  color: #e48124; /* Crunchyroll orange */
+  text-shadow: 0 0 16px rgba(255,122,0,0.5);
 }
 
-/* Navigation */
-.nav-center {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  margin-bottom: 20px;
+/* ---------------------------------------------
+   PANELS
+--------------------------------------------- */
+.result-box,
+.preview-box,
+.popup-inner,
+#tut-box {
+  background: rgba(0,0,0,0.75);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 14px;
+  border-radius: 14px;
+  box-shadow: 0 0 18px rgba(0,0,0,0.6);
 }
 
-.nav-btn {
-  padding: 12px 22px;
-  background: #E50914;
-  border: none;
-  border-radius: 6px;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.nav-btn:hover {
-  background: #B20710;
-  transform: translateY(-2px);
-}
-
-.back-btn {
-  padding: 12px 20px;
-  background: #222;
-  color: #fff;
-  border-radius: 4px;
-  border: 1px solid #444;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.back-btn:hover {
-  background: #333;
-  transform: translateY(-2px);
-}
-
-/* Reagents */
-.reagent {
-  background: #111;
-  padding: 12px;
-  border-radius: 6px;
-  margin-bottom: 12px;
-  border: 1px solid #222;
-}
-
-.reagent input {
-  background: #000;
-  color: #fff;
-  border: 1px solid #333;
-  border-radius: 4px;
-  padding: 6px;
-}
-
-/* Results */
 .result-box {
-  background: #111;
-  padding: 18px;
-  margin-top: 20px;
-  border-radius: 6px;
-  border: 1px solid #222;
-  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  margin: 20px auto;
+  max-width: 720px;
+  padding: 22px;
 }
 
-/* Preview */
-.preview-box {
-  background: #000;
-  border: 1px solid #333;
-  padding: 10px;
-  border-radius: 4px;
-  min-height: 40px;
-}
-
-/* Popup */
-.popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(3px);
-  z-index: 999;
-}
-
-.popup.hidden {
-  display: none;
-}
-
-.popup-inner {
-  background: #0A0A0A;
-  padding: 18px;
-  border-radius: 6px;
-  width: 90%;
-  max-width: 950px;
-  border: 1px solid #222;
-}
-
-/* --------------------------------------------------
-   PERIODIC TABLE BASE
--------------------------------------------------- */
-
-#periodic-table {
-  display: grid;
-  grid-template-columns: repeat(18, 34px);
-  grid-gap: 4px;
-  margin-top: 20px;
-}
-
-.periodic-cell {
-  width: 34px;
-  height: 34px;
-  background: #1A1A1A;
-  border-radius: 4px;
-  border: 1px solid #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 12px;
+/* ---------------------------------------------
+   BUTTONS
+--------------------------------------------- */
+.nav-btn,
+.back-btn,
+.btn-ghost,
+#tut-next {
   cursor: pointer;
-  transition: 0.15s;
+  padding: 11px 18px;
+  border-radius: 8px;
+  font-size: 1rem;
+  border: none;
+  font-weight: 600;
+}
+
+/* Netflix red primary */
+.nav-btn {
+  background: #cc0000;
+  color: #fff;
+}
+.nav-btn:hover {
+  background: #ff1f1f;
+  box-shadow: 0 0 12px rgba(255,0,0,0.5);
+  transform: translateY(-2px);
+}
+
+/* Crunchyroll orange secondary */
+.back-btn {
+  background: #ff7a00;
+  color: #fff;
+}
+.back-btn:hover {
+  background: #ff8f2e;
+  box-shadow: 0 0 12px rgba(255,122,0,0.5);
+  transform: translateY(-2px);
+}
+
+/* Ghost button */
+.btn-ghost {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ---------------------------------------------
+   REAGENT BOXES
+--------------------------------------------- */
+.reagent {
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 14px;
+  border-radius: 12px;
+  margin: 12px auto;
+  width: 85%;
+  box-shadow: 0 0 12px rgba(0,0,0,0.6);
+}
+
+/* ---------------------------------------------
+   PERIODIC TABLE CELLS
+--------------------------------------------- */
+.periodic-cell {
+  background: rgba(20,20,20,0.8);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  text-align: center;
+  padding: 7px;
+  color: #fff;
+  font-size: 0.78rem;
+  cursor: pointer;
 }
 
 .periodic-cell:hover {
-  background: #E50914;
-  border-color: #E50914;
-  transform: scale(1.1);
+  background: #ff7a00;
+  transform: translateY(-5px) scale(1.12);
+  border-color: rgba(255,255,255,0.3);
 }
 
-/* --------------------------------------------------
-   DR. STONE ANIME THEME (BACKGROUND + FX)
--------------------------------------------------- */
-
-/* Try multiple filenames to avoid mismatch */
-body::before {
-  content: "";
+/* ---------------------------------------------
+   POPUP
+--------------------------------------------- */
+.popup {
   position: fixed;
   inset: 0;
-  z-index: -3;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-image:
-    url("dr stone.jpeg"),
-    url("dr_stone.jpeg"),
-    url("dr stone.jpg"),
-    url("dr_stone.jpg"),
-    url("dr-stone.jpeg"),
-    url("dr-stone.jpg");
-  filter: brightness(0.65);
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
 }
 
-/* Moving cloud overlay */
-body::after {
-  content: "";
+.hidden {
+  display: none !important;
+}
+
+/* ---------------------------------------------
+   TUTORIAL
+--------------------------------------------- */
+#tut-overlay {
   position: fixed;
   inset: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.22;
-  animation: cloudsMove 35s linear infinite;
-  z-index: -2;
-
-  background-image:
-    url("dr stone.jpeg"),
-    url("dr_stone.jpeg"),
-    url("dr stone.jpg"),
-    url("dr_stone.jpg"),
-    url("dr-stone.jpeg"),
-    url("dr-stone.jpg");
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
-@keyframes cloudsMove {
-  0% { transform: translateX(0) translateY(0); }
-  50% { transform: translateX(4%) translateY(-1%); }
-  100% { transform: translateX(0) translateY(0); }
+#tut-box {
+  width: 320px;
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(15,15,15,0.9);
+  border: 1px solid rgba(255,255,255,0.12);
 }
 
-/* Parallax lift */
-.result-box,
-.reagent {
-  transform: translateZ(12px);
+/* Highlight */
+.tut-highlight {
+  outline: 3px solid #ff7a00;
+  box-shadow: 0 0 22px #ff7a00;
+  background-color: rgba(255,122,0,0.18);
 }
 
-/* Flash effect when reaction completes */
-#result.reaction-flash {
-  animation: scienceFlash 0.55s ease-out;
-}
-
-@keyframes scienceFlash {
-  0% { box-shadow: 0 0 26px rgba(120,255,150,0.9); }
-  50% { box-shadow: 0 0 12px rgba(120,255,150,0.4); }
-  100% { box-shadow: none; }
-}
-
-/* Quote hover */
+/* ---------------------------------------------
+   QUOTES
+--------------------------------------------- */
 .quote-hover {
   position: relative;
 }
@@ -226,37 +184,91 @@ body::after {
 .quote-hover:hover::after {
   content: attr(data-quote);
   position: absolute;
-  top: -50px;
+  top: -40px;
   left: 0;
-  background: rgba(255,255,210,0.95);
   padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  color: #2a2a2a;
-  border: 1px solid #bfa87a;
+  background: #cc0000;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: #fff;
   white-space: nowrap;
-  box-shadow: 0 0 10px rgba(255,255,200,0.4);
-  animation: fadeIn 0.15s ease-out;
+  box-shadow: 0 0 10px rgba(255,0,0,0.4);
 }
-
+/* Fade in elements */
+.fade-in {
+  animation: fadeIn 1.4s ease forwards;
+  opacity: 0;
+}
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Button pulse */
-.nav-btn:hover,
-.back-btn:hover {
-  animation: pulseGlow 0.3s ease-out;
+/* Parallax background */
+body {
+  background-attachment: fixed;
 }
 
-@keyframes pulseGlow {
-  0% { box-shadow: 0 0 0 rgba(120,255,150,0.5); }
-  50% { box-shadow: 0 0 12px rgba(120,255,150,0.8); }
-  100% { box-shadow: none; }
+/* Glass Navbar */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.55);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 14px rgba(0,0,0,0.6);
+  backdrop-filter: none;
+  z-index: 4000;
 }
 
-/* HUD lift */
-.periodic-cell:hover {
-  transform: translateY(-4px) scale(1.15);
+#navbar .nav-title {
+  color: #ff7a00;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+#navbar .nav-links a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 1rem;
+}
+#navbar .nav-links a:hover {
+  color: #ff7a00;
+}
+
+/* Subject selection panels */
+.subject-select {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  padding: 20px;
+}
+
+.subject-panel {
+  width: 240px;
+  padding: 24px;
+  background: rgba(0,0,0,0.65);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+  transition: 0.25s ease;
+}
+
+.subject-panel:hover {
+  transform: translateY(-12px) scale(1.05);
+  border-color: #ff7a00;
+  box-shadow: 0 0 22px rgba(255,122,0,0.5);
+}
+/* Fix home page spacing under fixed navbar */
+body {
+  padding-top: 80px; 
 }
