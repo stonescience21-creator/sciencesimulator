@@ -891,4 +891,81 @@ resultDiv.classList.remove("reaction-flash");
 void resultDiv.offsetWidth; // force reflow
 resultDiv.classList.add("reaction-flash");
 
+// ---------------- TUTORIAL ----------------
+(function() {
+  const tutorialSteps = [
+    {
+      text: "Welcome to the Chemistry Simulator! Let's learn the basics.",
+      highlight: null
+    },
+    {
+      text: "These boxes are where you enter reagents.",
+      highlight: () => document.querySelector(".reagent")
+    },
+    {
+      text: "Use the 'Builder' button to construct formulas using the periodic table.",
+      highlight: () => document.querySelector(".open-builder")
+    },
+    {
+      text: "Add more reagents with this button.",
+      highlight: () => document.getElementById("add-reagent")
+    },
+    {
+      text: "Remove excess reagent slots here.",
+      highlight: () => document.getElementById("remove-reagent")
+    },
+    {
+      text: "Press Predict to simulate your reaction.",
+      highlight: () => document.getElementById("predict")
+    },
+    {
+      text: "And you're done! Go experiment.",
+      highlight: null
+    }
+  ];
+
+  let tutIndex = 0;
+  const tutOverlay = document.getElementById("tut-overlay");
+  const tutText = document.getElementById("tut-text");
+  const tutNext = document.getElementById("tut-next");
+
+  function runTutorial() {
+    tutOverlay.classList.remove("hidden");
+    showTutorialStep();
+  }
+
+  function showTutorialStep() {
+    document.querySelectorAll(".tut-highlight").forEach(el => el.classList.remove("tut-highlight"));
+    const step = tutorialSteps[tutIndex];
+    tutText.innerHTML = step.text;
+
+    if (step.highlight) {
+      const target = step.highlight();
+      if (target) target.classList.add("tut-highlight");
+    }
+  }
+
+  tutNext.onclick = () => {
+    tutIndex++;
+    if (tutIndex >= tutorialSteps.length) {
+      tutOverlay.classList.add("hidden");
+      localStorage.setItem("chemTutorialDone","1");
+      document.querySelectorAll(".tut-highlight").forEach(el => el.classList.remove("tut-highlight"));
+      return;
+    }
+    showTutorialStep();
+  };
+
+  // Run once unless already completed
+  if (!localStorage.getItem("chemTutorialDone")) {
+    setTimeout(runTutorial, 700);
+  }
+
+  // EXPOSE TO GLOBAL SCOPE
+  window.openChemTutorial = () => {
+    tutIndex = 0;
+    runTutorial();
+  };
+})();
+
 })();
